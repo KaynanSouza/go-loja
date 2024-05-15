@@ -20,7 +20,7 @@ func CreateProduct(w http.ResponseWriter, r *http.Request) {
 }
 
 func Insert(w http.ResponseWriter, r *http.Request) {
-	if r.Method == "Post" {
+	if r.Method == "POST" {
 		nome := r.FormValue("nome")
 		descricao := r.FormValue("descricao")
 		preco := r.FormValue("preco")
@@ -30,14 +30,12 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 
 		if err != nil {
 			log.Println("Erro ao converter o preço", err)
-			return
 		}
 
 		quantidadeConv, err := strconv.Atoi(quantidade)
 
 		if err != nil {
 			log.Println("Erro ao converter a quantidade", err)
-			return
 		}
 
 		models.CreateProdict(nome, descricao, precoConv, quantidadeConv)
